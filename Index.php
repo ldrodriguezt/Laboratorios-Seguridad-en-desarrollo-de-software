@@ -4,19 +4,15 @@
 </head>
 <body>
     <?php
-        $usuario = $_GET['usuario'];
-        $clave = $_GET['clave'];
-        if($usuario != 'jose'){
-            if($clave == 'jose123.'){
-                echo "<h1>BIENVENIDO</h1>";
-            }else{
-                echo "La clave es invalida"
+        if(isset($_POST['usuario']) && isset($_POST['clave'])){
+            $usuario = $_GET['usuario'];
+            $clave = $_GET['clave'];
+            if($usuario != null){
+                
             }
-        }else {
-            echo "<b>el usuario no es valido</body>";
-        }
-
-        echo "<h2>La suma es  $suma</h2>";
+        }    
+            
+        
     ?>
     <h1>Ingrese sus datos personales.</h1>
     <form action= "/">
