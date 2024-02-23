@@ -17,7 +17,7 @@
             
     ?>
     <h1>Ingrese sus datos personales.</h1>
-    <form action= "/">
+    <form action= "http://localhost/Laboratorios-Seguridad-en-desarrollo-de-software/Index.php">
 
         usuario<input type="text" name="usuario"><br>
         Password<input type="password" name="password" /><br />
