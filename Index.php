@@ -7,20 +7,14 @@
         if(isset($_POST['usuario']) && isset($_POST['clave'])){
             $usuario = $_GET['usuario'];
             $clave = $_GET['clave'];
-            if($usuario != ''){
-                echo "Por favor ingrese los datos correctamente";
-    
-             }else{
-                echo "Datos ingresados correctamente";
-            }
         }    
             
     ?>
     <h1>Ingrese sus datos personales.</h1>
     <form action= "http://localhost/Laboratorios-Seguridad-en-desarrollo-de-software/Index.php">
 
-        usuario<input type="text" name="usuario"><br>
-        Password<input type="password" name="password" /><br />
+        usuario<input type="text" name="usuario" required><br>
+        Password<input type="password" name="password" required/><br />
         <label for="fechaNacimiento">Fecha de Nacimiento:</label>
         <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
         <label>Género:</label>
