@@ -11,7 +11,7 @@
             
     ?>
     <h1>Ingrese sus datos personales.</h1>
-    <form action= "http://localhost/Laboratorios-Seguridad-en-desarrollo-de-software/Index.php">
+    <form action= "http://localhost/Laboratorios-Seguridad-en-desarrollo-de-software/Index.php" method="post">
 
         usuario<input type="text" name="usuario" required><br>
         Password<input type="password" name="password" required/><br />
