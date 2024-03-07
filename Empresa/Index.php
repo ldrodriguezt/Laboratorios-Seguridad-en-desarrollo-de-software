@@ -19,39 +19,59 @@
         $dbpassword = "";
         
         $conn = new PDO("mysql:host=localhost; dbname=empresa", $dbuser, $dbpassword);
+        
+        //limpiasr credenciales
         $dbuser = "";
         $dbpassword = "";
-        $query = "INSERT INTO `registro` (`id`, `nombre_completo`, `email`, `telefono`, `ocupacion`, `pref_comunicacion`, `usuario`, `password` ) VALUES (NULL, '$nombre_completo', '$email', '$telefono', '$ocupacion', '$pref_ocupacion', '$usuario', '$password');";
+
+        $query = "INSERT INTO `registro` (`id`, `nombre_completo`, `email`, `telefono`, `ocupacion`,`pref_comunicacion`, `usuario`, `password`) VALUES (NULL, '$nombre_completo', '$email', '$telefono', '$ocupacion', '$pref_comunicacion','$usuario', '$password');";
         $q = $conn->prepare($query);
         $result = $q->execute();
+
+        header("Location: inicio_sesion.php");
+        exit;
     }   
                 
 ?>
 
 
 <style>
-        .container {
-            width: 50%; 
-            margin: 0 auto; 
-        }
+    .container {
+        width: 50%; 
+        margin: 0 auto; 
+    }
 </style>
 
+<head>
+    <title>Registrese</title>
+</head>
 <div class="container">
-    <h1> Registro inicial de usuarios.</h1>
+    <center>
+        <h1> Tecnologías Globales.</h1>
+    </center>    
+    <hr>
+    <h2> Registro inicial de usuarios.</h2>
     <hr>
     <form action="" method="post">
         Nombre completo: <input type="text" name="nombre_completo" required><br>
         E-mail: <input type="text" name="email" required><br>
         Teléfono: <input type="text" name="telefono" required><br>
         Ocupación: <input type="text" name="ocupacion" required><br>
-        ¿Como prefiere que nos comuniquemos con usted?: <input type="checkbox" name="llamda" value="llamada">
-                Llamada. 
-        <input type="checkbox" name="email" value="email">
-            Correo electroníco.        
-        <br>
+
+        <label>Medios de contacto:</label>
+
+        <input type="radio" id="email" name="pref_comunicacion" value="e-mail">
+        <label for="e-mail">E-mail</label>
+
+        <input type="radio" id="llamada" name="pref_comunicacion" value="llamada">
+        <label for="llamada">Llamada</label><br>
+
         Usuario: <input type="text" name="usuario" required><br>
         Password: <input type="password" name="password" required><br>
         <hr>
         <input type="submit" value="Registrarse">
+        <hr>
+        Ya tengo cuenta: <a href="http://localhost/Laboratorios-Seguridad-en-desarrollo-de-software/empresa/inicio_sesion.php" class="boton">Iniciar sesión</a>
     </form>
 </div>
+
