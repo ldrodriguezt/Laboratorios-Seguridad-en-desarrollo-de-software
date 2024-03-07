@@ -15,8 +15,8 @@
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
 
-        $dbuser = "root";
-        $dbpassword = "";
+        $dbuser = "admin_sql";
+        $dbpassword = "Zaq1xsw2";
         
         $conn = new PDO("mysql:host=localhost; dbname=empresa", $dbuser, $dbpassword);
         

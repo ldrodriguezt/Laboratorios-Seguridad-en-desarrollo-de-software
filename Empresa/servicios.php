@@ -13,8 +13,8 @@
         $descripcion = $_POST['descripcion'];
         $fecha = $_POST['fecha'];
 
-        $dbuser = "root";
-        $dbpassword = "";
+        $dbuser = "admin_sql";
+        $dbpassword = "Zaq1xsw2";
         
         $conn = new PDO("mysql:host=localhost; dbname=empresa", $dbuser, $dbpassword);
         
