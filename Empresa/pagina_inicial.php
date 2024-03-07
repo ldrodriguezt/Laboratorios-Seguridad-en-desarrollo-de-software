@@ -25,7 +25,7 @@
 <body>
     <div class="container">  
         <center>
-            <h1> Menú de opciones Tecnologías globales</h1>
+            <h1> Menú de opciones Tecnologías globales.</h1>
         </center>
         <hr>
         <button class="boton" onclick="window.location.href='pqrsf.php'">Crear una PQRSF</button>
