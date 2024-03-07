@@ -5,7 +5,7 @@
             display: block;
             width: 200px;
             height: 60px;
-            background-color: #3498db;
+            background-color: #6199be;
             color: white;
             font-size: 18px;
             text-align: center;
@@ -25,11 +25,13 @@
 <body>
     <div class="container">  
         <center>
-        <h1> Menú de opciones Tecnologías globales</h1>
-    </center>
-    <hr>
+            <h1> Menú de opciones Tecnologías globales</h1>
+        </center>
+        <hr>
         <button class="boton" onclick="window.location.href='pqrsf.php'">Crear una PQRSF</button>
         <button class="boton" onclick="window.location.href='servicios.php'">Solicitar un servicio</button>
-
-    </div>    
+        <hr>    
+    </div>
+    
+    <button class="boton" onclick="window.location.href='inicio_sesion.php'">Cerrar sesión</button>
 </body>
