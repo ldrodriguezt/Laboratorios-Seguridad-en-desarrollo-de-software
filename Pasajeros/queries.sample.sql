@@ -29,3 +29,4 @@ FROM vuelos
 WHERE destino = "cartagena" AND origen = "medellin";
 
 
+

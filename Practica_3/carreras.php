@@ -40,8 +40,13 @@
                 $dbuser = "";
                 $dbpassword = "";
 
-                $consultaSQL = $conn->prepare("SELECT nombre, facultad, fecha_inicio as inicio, fecha_finalizacion as final FROM carreras WHERE facultad = '$facultad' && tipo = '$tipo'");
-                $consultaSQL->execute();
+                $sentencia = "SELECT nombre, facultad, fecha_inicio as inicio, fecha_finalizacion as final FROM carreras WHERE facultad = :facultad && tipo = :tipo;";
+
+                $consultaSQL = $conn->prepare($sentencia);
+                $consultaSQL->execute(array(
+                    ':facultad' => $facultad,
+                    ':tipo' => $tipo,
+                ));
 
                 ?>
 

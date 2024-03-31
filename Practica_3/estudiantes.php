@@ -36,8 +36,12 @@
                 $dbuser = "";
                 $dbpassword = "";
 
-                $consultaSQL = $conn->prepare("SELECT nombre, apellido, documento as identificacion, cuidad as ciudad FROM estudiantes WHERE fecha_nacimiento = '$fecha_nacimiento'");
-                $consultaSQL->execute();
+                $sentencia = "SELECT nombre, apellido, documento as identificacion, cuidad as ciudad FROM estudiantes WHERE fecha_nacimiento = :fecha_nacimiento;";
+
+                $consultaSQL = $conn->prepare($sentencia);
+                $consultaSQL->execute(array(
+                    ':fecha_nacimiento' => $fecha_nacimiento,
+                ));
 
                 ?>
 

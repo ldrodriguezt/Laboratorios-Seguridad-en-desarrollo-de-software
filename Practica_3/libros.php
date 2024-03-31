@@ -16,7 +16,7 @@
     <body>
         <h1> Busqueda de libros con filtros de ordenamiento. </h1>
         <form action = "" method = GET>
-            Ingrese el nombre de la facultad: 
+            Ordenar por: 
             <select name="filtro" id="filtro">
                 <option value="fecha_publicacion">Fecha de publicación</option>
                 <option value="autor">Autor</option>
@@ -28,6 +28,10 @@
             <input type ="submit" value= "Buscar">
         </form>
         <?php
+            if(isset($_GET["filtro"])){
+            
+
+                $filtro = $_GET["filtro"];
 
                 $dbuser = "admin_sql";
                 $dbpassword = "Zaq1xsw2";
@@ -37,9 +41,9 @@
                 $dbuser = "";
                 $dbpassword = "";
 
-                $filtro = $_GET['filtro'];
+                $sentencia = "SELECT * FROM libros ORDER BY  $filtro ASC";
 
-                $consultaSQL = $conn->prepare("SELECT * FROM libros ORDER BY  $filtro ASC");
+                $consultaSQL = $conn->prepare($sentencia);
 
 
                 $consultaSQL->execute();
@@ -84,7 +88,7 @@
             <?php
 
                 }    
-            
+            }    
         ?>
         </table>
 
