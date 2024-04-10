@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+<head>
+    <title>Registro de Tienda de Mascotas</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            label {
+                font-weight: bold;
+            }
+            input, select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+            button {
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Registro de Tienda de Mascotas</h1>
+
+            <img id = 'imagen' src = "registro.png" />
+
+            <form>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" onkeypress="onNombreKeyPress(this);">
+                <span class="error-message" id="nombreError"></span><br>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" onkeypress="onNombreKeyPress(this);" >
+                <span class="error-message" id="correoError"></span><br>
+                
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="password1" name="password" onkeypress="onNombreKeyPress(this);">
+
+                <label for="contrasena">Confirmar contraseña:</label>
+                <input type="password" id="password2" name="password" onkeypress="onNombreKeyPress(this);">
+                <span class="error-message" id="passwordError"></span><br>
+                
+                <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" >
+                <span class="error-message" id="fechaError"></span><br>
+                
+                <label for="tipo-mascota">Tipo de Mascota:</label>
+                <select id="tipo-mascota" name="tipo-mascota">
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="ave">Ave</option>
+                </select>
+                
+                <label>Género:</label><br>
+                <br>
+                <label for="masculino">Macho</label>
+                <input type="radio" id="macho" name="genero" value="macho">
+                <label for="femenino">Hembra</label><br>
+                <input type="radio" id="hembra" name="genero" value="hembra">
+                <span class="error-message" id="generoError"></span><br>
+                
+                <label>
+                    Acepto los términos y condiciones. <input type="checkbox" id="terminos_condiciones">
+                </label>
+                <br>
+                
+            </form>
+
+            <button onclick="registrarse(); validarCorreoElectronico(); validarPassword(); validarRadio(); validarFecha(); validarcheckbox();">Registrarse</button>
+
+        </div>
+
+       
+        <script type="text/JavaScript">
+
+            //  Validamos que el campo nombre no este vacio
+            function registrarse() {
+                let nombreElement = document.getElementById('nombre'); 
+                console.log({nombreElement});
+                if(nombreElement.value == ''){
+                    nombreElement.style.background = 'red';
+                    nombreElement.focus();
+                    document.getElementById('nombreError').textContent = 'Por favor, ingresa un nombre válido.';
+                }else {
+                    document.getElementById('nombreError').textContent = '';
+                    nombreElement.style.background = 'green';
+                }
+            }
+
+            function onNombreKeyPress(nombreElement) {
+                nombreElement.style.background = 'none';
+            }
+
+            // Validamos que el campo no este vacio y que cumpla con el formato de correo electronico
+            function validarCorreoElectronico() {
+                let correoElement = document.getElementById('correo');
+                const patron = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)*[a-zA-Z]{2,}))$/;;
+
+                if(correoElement.value == ''){
+                    correoElement.style.background = 'red';
+                    correoElement.focus();
+                }else{
+                    if (patron.test(correoElement.value)) {
+                        correoElement.style.background = 'green'; 
+                    } else {
+                            correoElement.style.background = 'orange';
+                            document.getElementById('correoError').textContent = 'Por favor, ingresa un correo electrónico válido.';
+                    }
+                }
+
+            }
+
+            function onNombreKeyPress(correoElement) {
+                    correoElement.style.background = 'none';
+            }
+
+            // Vamos a validar que la contraseña cumpla con condiciones de seguridad y que en los dos campos sea la misma contraseña
+
+            function validarPassword() {
+                let password1Element = document.getElementById('password1');
+                let password2Element = document.getElementById('password2');
+                let mensajeError = document.getElementById('passwordError');
+
+                // Confirmemos que ambos password son iguales
+                if (password1Element.value !== password2Element.value) {
+                    password1Element.style.background = 'orange';
+                    password2Element.style.background = 'orange';
+                    mensajeError.textContent = 'Las contraseñas no coinciden. Por favor, inténtelo de nuevo.';
+
+                }
+
+                 // Verificamos si contiene al menos una letra mayúscula, una minúscula, un número y un carácter especial
+                const patron = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+                if (!patron.test(password1Element.value)) {
+                    password1Element.style.background = 'orange';
+                    password2Element.style.background = 'orange';
+                    mensajeError.textContent = 'La contraseña debe contener al menos una letra mayúscula, una minúscula, un número y un carácter especial.';
+
+                }else{
+                    password1Element.style.background = 'green';
+                    password2Element.style.background = 'green';
+                }
+
+
+            }
+
+            function onNombreKeyPress(password1Element) {
+                    password1Element.style.background = 'none';
+            }
+
+            function onNombreKeyPress(password2Element) {
+                    password2Element.style.background = 'none';
+            }
+
+            //Selleción obligada de genero en la mascota
+            function validarRadio() {
+                const botonesRadio = document.getElementsByName("genero");
+                let opcionSeleccionada = false;
+
+                for (const botonRadio of botonesRadio) {
+                    if (botonRadio.checked) {
+                        opcionSeleccionada = true;
+                        break;
+                    }
+                }
+
+                if (!opcionSeleccionada) {
+                    document.getElementById('generoError').textContent = 'Por favor, selecciona un género.'
+                }
+            }
+            
+            // Validar la aceptacion de terminos y condiones
+            function validarcheckbox() {
+                    const imagen = document.getElementById("imagen");
+                    let checkbox = document.getElementById("terminos_condiciones");
+                    if (!checkbox.checked) {
+                        alert("Debes aceptar los términos y condiciones.");
+                        return false; 
+                    }else{
+                        imagen.src = "bienvenida.avif";
+                        }
+            }
+
+            // Validamos que la fecha de nacimiento sea menor a la actual
+
+            function validarFecha() {
+                let fecha = document.getElementById("fecha-nacimiento").value;
+                let fechaActual = new Date();
+                let fechaIngresada = new Date(fecha);
+
+                if (fechaIngresada > fechaActual) {
+                    document.getElementById('fechaError').textContent ="La fecha ingresada debe ser menor que la fecha actual.";
+                }
+                
+            }
+
+
+        </script>
+    </body>
+</html>
